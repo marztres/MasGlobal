@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="mt-3">Mas Global Test</h1>
+    <div class="row">
+        <form>
+            <div class="form-group">
+                <label for="exampleInputEmail1">Identification</label>
+                <input type="number"  class="form-control" id="identification" [(ngModel)]="identification" [ngModelOptions]="{standalone: true}"  placeholder="Write the identity number..." >
+                <small id="emailHelp" class="form-text text-muted">If you don't wirte anything in the text input you will retrieve all employees</small>
+            </div>
+            <button (click)="getEmployees()"  class="btn btn-primary">Get Employe</button>
+        </form>
+    </div>
+    <div class="row">
+        <h1 class="mt-3">Lista de empleados</h1>
+        <table class='table' *ngIf="employees">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <td>ContractTypeName</td>
+                    <td>HourlyRate</td>
+                    <td>MontlyRate</td>
+                    <td>AnualSalary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let employee of employees">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.contractTypeName == 0 ? "Hourly" : "Monthly" }}</td>
+                    <td>{{ employee.hourlySalary }}</td>
+                    <td>{{ employee.monthlySalary }}</td>
+                    <td>{{ employee.anualSalary }}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
